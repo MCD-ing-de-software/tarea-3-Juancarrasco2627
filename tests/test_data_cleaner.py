@@ -19,7 +19,6 @@ def make_sample_df() -> pd.DataFrame:
         }
     )
 
-
 class TestDataCleaner(unittest.TestCase):
     """Test suite for DataCleaner class."""
 
@@ -93,9 +92,6 @@ class TestDataCleaner(unittest.TestCase):
 
         self.assertLess(len(tabla_resultado), len(df_test))
 
-
-
-
     def test_drop_invalid_rows_raises_keyerror_for_unknown_column(self):
         """Test que verifica que el método drop_invalid_rows lanza un KeyError cuando
         se llama con una columna que no existe en el DataFrame.
@@ -110,8 +106,6 @@ class TestDataCleaner(unittest.TestCase):
 
         with self.assertRaises(KeyError):
             cleaner.drop_invalid_rows(df_test, ["does_not_exist"])
-
-
 
     def test_trim_strings_strips_whitespace_without_changing_other_columns(self):
         """Test que verifica que el método trim_strings elimina correctamente los espacios
@@ -215,7 +209,7 @@ class TestDataCleaner(unittest.TestCase):
         cleaner = DataCleaner()
 
         with self.assertRaises(TypeError):
-            cleaner.remove_outliers_iqr(df_test, ["city"])
+            cleaner.remove_outliers_iqr(df_test, "city")
 
 if __name__ == "__main__":
     unittest.main()
